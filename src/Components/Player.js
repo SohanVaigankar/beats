@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlay,
@@ -18,6 +18,16 @@ const Player = ({
   songs,
   setSongs,
 }) => {
+  const activeLibraryHandler = (nextPrev) => {
+    const songsWithUpdatedInfo = songs.map((song) => {
+      return song.id === currentSong.id
+        ? { ...song, active: true }
+        : { ...song, active: false };
+    });
+
+    setSongs(songsWithUpdatedInfo);
+  };
+
   // Event Handlers
   const playSongHandler = () => {
     if (isPlaying) {
@@ -28,17 +38,6 @@ const Player = ({
       setIsPlaying(!isPlaying);
     }
   };
-
-  // useEffect to handle and update active state of library
-  useEffect(() => {
-    const songsWithUpdatedInfo = songs.map((song) => {
-      return song.id === currentSong.id
-        ? { ...song, active: true }
-        : { ...song, active: false };
-    });
-
-    setSongs(songsWithUpdatedInfo);
-  }, [currentSong]);
 
   // Drag event handler : playing music from specific time
   const dragEventHandler = (event) => {
@@ -62,6 +61,7 @@ const Player = ({
       currentIndex === songs.length - 1 ? (currentIndex = 0) : currentIndex++;
     }
     await setCurrentSong(songs[currentIndex]);
+    activeLibraryHandler(songs[currentIndex]);
     (await isPlaying) ? audioRef.current.play() : audioRef.current.pause();
   };
 
