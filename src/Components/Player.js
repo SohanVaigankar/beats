@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlay,
   faPause,
   faAngleLeft,
   faAngleRight,
+  faVolumeXmark,
+  faVolumeLow,
+  faVolumeHigh,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Player = ({
@@ -18,6 +21,20 @@ const Player = ({
   songs,
   setSongs,
 }) => {
+  // state to keep track of voulme
+  const [volume, setVolume] = useState(10);
+  const [mute, setMute] = useState(false);
+
+  useEffect(() => {
+    if (audioRef) {
+      audioRef.current.volume = volume / 100;
+    }
+  }, [volume, audioRef]);
+
+  useEffect(() => {
+    mute ? setVolume(0) : setVolume(30);
+  }, [mute]);
+
   const activeLibraryHandler = (nextPrev) => {
     const songsWithUpdatedInfo = songs.map((song) => {
       return song.id === currentSong.id
@@ -96,6 +113,34 @@ const Player = ({
           onClick={() => skipSongHandler("next")}
           size="2x"
           icon={faAngleRight}
+        />
+      </div>
+      <div className="volume-control">
+        <FontAwesomeIcon
+          icon={
+            volume < 1 || mute
+              ? faVolumeXmark
+              : volume < 50
+              ? faVolumeLow
+              : faVolumeHigh
+          }
+          className="volume-icon"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setMute(!mute);
+          }}
+        />
+        <input
+          type="range"
+          min={0}
+          max={100}
+          value={volume}
+          onChange={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            mute && volume > 1 ? setMute(false) : setVolume(e.target.value);
+          }}
         />
       </div>
     </div>
