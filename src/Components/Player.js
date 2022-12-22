@@ -36,14 +36,14 @@ const Player = ({
     mute ? setVolume(0) : setVolume(30);
   }, [mute]);
 
-  const activeLibraryHandler = (nextPrev) => {
+  const activeLibraryHandler = async (newSong) => {
     const songsWithUpdatedInfo = songs.map((song) => {
-      return song.id === currentSong.id
+      return song.id === newSong.id
         ? { ...song, active: true }
         : { ...song, active: false };
     });
 
-    setSongs(songsWithUpdatedInfo);
+    await setSongs(songsWithUpdatedInfo);
   };
 
   // Event Handlers

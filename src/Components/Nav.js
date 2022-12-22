@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
+// icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMusic, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+import { useTheme } from "../context/ThemeContext";
 
 const Nav = ({ libraryStatus, setLibraryStatus }) => {
-  // state to  keep track of theme
-  const [darkTheme, setDarkTheme] = useState(false);
+  // context
+  const { darkTheme, setDarkTheme } = useTheme();
+
   return (
     <nav>
       <h1>Waves</h1>

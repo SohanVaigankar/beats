@@ -16,10 +16,88 @@ h3,h4{
 
 
 .App{
-    // height: 100vh;
+    height: 100vh;
 transition: all 0.5s ease;
-// background-color: #333;
-// color: #fafafa;
+}
+
+.dark-theme{
+    background-color: #333;
+    color: #fafafa;
+    
+    // nav.scss
+    .nav-right{
+        button{
+            border-color: #fafafa;
+            color:#fafafa;
+            
+            &:hover{
+                background-color:#fafafa;
+                color:#333;
+            }
+        }
+    }
+
+    // songs.scss
+    .song-container{
+        h3{
+            color: #fafafabd;
+        }
+    }
+
+    // player.scss
+    .player{
+
+        .time-control{
+            p{
+                color:#fafafad3;
+            }
+        }
+
+        .play-control{
+            svg{
+                color:#fafafad3;
+
+                &:hover{
+                    background-color: rgba(233, 216, 243, 0.331);
+                }
+            }
+        }
+    }
+
+    // library.scss
+    .library{
+        background-color: #333;
+        box-shadow: 2px 2px 50px rgb(15, 15, 15);
+        .library-song-container{
+            // opacity: 0.5;
+            .song-description{
+                h3{
+                    color:#f7f7f7ea;
+                }
+                h4{
+                    color:#f7f7f79e;
+                }
+            }
+            
+            &:hover{
+                background-color: rgba(222, 222, 255, 0.158);
+            }
+            
+        }
+        
+        .selected {
+            background-color: rgba(223, 192, 246, 0.5);
+            .song-description{
+                h3{
+                    color: #f7f7f7;
+                }
+                h4{
+                    color: #f7f7f7e0;
+                }
+            }
+          }
+    }
+
 }
 
 .shift-to-right{

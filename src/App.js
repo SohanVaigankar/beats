@@ -1,19 +1,24 @@
 import React, { useState, useRef } from "react";
 import "./styles/app.scss";
 
+// components
 import Nav from "./Components/Nav";
 import Player from "./Components/Player";
 import Song from "./Components/Song";
-
-// import Util
-import data from "./util";
-
-// import Library
 import Library from "./Components/Library";
 
-function App() {
+// song data
+import data from "./util";
+
+// context
+import { useTheme } from "./context/ThemeContext";
+
+const App = () => {
   // Reference hook : used to select a element in react
   const audioRef = useRef(null);
+
+  // them context
+  const { darkTheme } = useTheme();
 
   // state to initialise songs
   const [songs, setSongs] = useState(data());
@@ -56,7 +61,7 @@ function App() {
   };
 
   return (
-    <div className={`App ${libraryStatus ? "shift-to-right" : ""}`}>
+    <div className={`${darkTheme ? 'App dark-theme' : 'App'} ${libraryStatus ? "shift-to-right" : ""}`}>
       <Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus} />
       <Song currentSong={currentSong} songDirection={songDirection} />
       <Player
@@ -89,6 +94,6 @@ function App() {
       ></audio>
     </div>
   );
-}
+};
 
 export default App;
