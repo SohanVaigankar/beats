@@ -5,6 +5,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    opacity: 0;
     
     img{
         width: 15%;
@@ -16,6 +17,7 @@
     
     h2{
         padding: 3rem 1rem 1rem 1rem;
+        text-align: center;
     }
 
     h3{
@@ -27,6 +29,12 @@
 @keyframes test{
     100%{
         transform:rotate(360deg);
+    }
+}
+@keyframes nextSong{
+    100%{
+        transform:translate(0%);
+        opacity: 1;
     }
 }
 

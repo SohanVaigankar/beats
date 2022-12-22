@@ -20,6 +20,7 @@ const Player = ({
   setCurrentSong,
   songs,
   setSongs,
+  setSongDirection,
 }) => {
   // state to keep track of voulme
   const [volume, setVolume] = useState(10);
@@ -74,8 +75,10 @@ const Player = ({
     let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
     if (direction === "previous") {
       currentIndex === 0 ? (currentIndex = songs.length - 1) : currentIndex--;
+      setSongDirection("left");
     } else {
       currentIndex === songs.length - 1 ? (currentIndex = 0) : currentIndex++;
+      setSongDirection("right");
     }
     await setCurrentSong(songs[currentIndex]);
     activeLibraryHandler(songs[currentIndex]);

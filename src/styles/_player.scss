@@ -5,9 +5,6 @@
     align-items: center;
     gap: 3rem;
     justify-content: flex-start;
-    // background-color: red;
-    
-    
 
     .time-control{
         width: 50%;
@@ -101,10 +98,11 @@
         right: 2rem;
         display: flex;
         align-items: center;
-        gap: 1rem;
+        // gap: 5rem;
         margin-bottom: 1rem;
-
+        
         input[type="range"]{
+            margin-left: 0.5rem;
             -webkit-appearance: none;
             background-color: transparent;
             &:focus{
@@ -155,8 +153,10 @@
         }
 
         .volume-icon{
-            color: #333;
+            color: rgb(166, 122, 237);
            font-size: 1.7rem;
+           position: absolute;
+           left: 0;
            
            &:hover{
             cursor:pointer;
@@ -188,7 +188,7 @@
         .play-control{
             width: 50%;
         }
-        
+
         .volume-control{
             input[type="range"]{
                 width: 7rem;

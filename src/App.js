@@ -30,6 +30,9 @@ function App() {
     duration: 0,
   });
 
+  // state to keep track of song direction
+  const [songDirection, setSongDirection] = useState("left");
+
   // state to store library status (open/closed)
   const [libraryStatus, setLibraryStatus] = useState(false);
 
@@ -55,7 +58,7 @@ function App() {
   return (
     <div className={`App ${libraryStatus ? "shift-to-right" : ""}`}>
       <Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus} />
-      <Song currentSong={currentSong} />
+      <Song currentSong={currentSong} songDirection={songDirection} />
       <Player
         songInfo={songInfo}
         setSongInfo={setSongInfo}
@@ -66,6 +69,7 @@ function App() {
         setIsPlaying={setIsPlaying}
         currentSong={currentSong}
         setCurrentSong={setCurrentSong}
+        setSongDirection={setSongDirection}
       />
       <Library
         songs={songs}

@@ -47,6 +47,15 @@ function MusicPlaylist() {
       id: v4(),
       active: false,
     },
+    {
+      name: "Powerful Beat",
+      cover: "https://cdn.pixabay.com/audio/2022/10/05/02-12-02-660_200x200.jpeg",
+      artist: "penguinmusic",
+      audio: "https://cdn.pixabay.com/audio/2022/10/05/audio_686ddcce85.mp3",
+      color: ["#EF8EA9", "#ab417f"],
+      id: v4(),
+      active: false,
+    },
   ];
 }
 

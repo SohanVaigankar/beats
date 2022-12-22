@@ -2,7 +2,21 @@ import React from "react";
 
 const Song = (props) => {
   return (
-    <div className="song-container">
+    <div
+      key={props.currentSong.name}
+      className={`song-container`}
+      style={
+        props.songDirection === "left"
+          ? {
+              transform: "translate(-20%)",
+              animation: "nextSong 0.5s ease forwards",
+            }
+          : {
+              transform: "translate(20%)",
+              animation: "nextSong 0.5s ease forwards",
+            }
+      }
+    >
       <img
         src={props.currentSong.cover}
         alt={`cover of the song ${props.currentSong.name} by ${props.currentSong.artist}`}
