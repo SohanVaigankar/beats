@@ -4,6 +4,11 @@ nav {
   justify-content: space-around;
   align-items: center;
 
+  h1{
+    font-weight:800;
+    text-shadow: 1px 1px;
+  }
+
   .nav-right {
     display: flex;
     justify-content: space-between;
