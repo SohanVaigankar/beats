@@ -14,9 +14,36 @@ h3,h4{
     color: rgb(100, 100, 100)
 }
 
+
 .App{
-    // position: relative;
+transition: all 0.5s ease;
 }
+
+.shift-to-right{
+    margin-left: 15%;
+}
+
+@media screen and (max-width:1600px) {
+    .shift-to-right{
+        margin-left: 20%;
+    }
+}
+@media screen and (max-width:1440px) {
+    .shift-to-right{
+        margin-left: 25%;
+    }
+}
+@media screen and (max-width:1240px) {
+    .shift-to-right{
+        margin-left: 30%;
+    }
+}
+@media screen and (max-width:1024px) {
+    .shift-to-right{
+        margin-left: 35%;
+    }
+}
+
 @import "./player";
 @import "./song";
 @import "./library";
