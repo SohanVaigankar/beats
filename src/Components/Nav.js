@@ -10,7 +10,7 @@ const Nav = ({ libraryStatus, setLibraryStatus }) => {
 
   return (
     <nav>
-      <h1>Waves</h1>
+      <h1>BEATS</h1>
       <div className="nav-right">
         <FontAwesomeIcon
           className={`theme-icon`}
