@@ -11,7 +11,7 @@ import Library from "./Components/Library";
 import data from "./util";
 
 // context
-import { useTheme } from "./context/ThemeContext";
+import { useTheme } from "./contexts/context";
 
 const App = () => {
   // Reference hook : used to select a element in react
@@ -61,7 +61,11 @@ const App = () => {
   };
 
   return (
-    <div className={`${darkTheme ? 'App dark-theme' : 'App'} ${libraryStatus ? "shift-to-right" : ""}`}>
+    <div
+      className={`${darkTheme ? "App dark-theme" : "App"} ${
+        libraryStatus ? "shift-to-right" : ""
+      }`}
+    >
       <Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus} />
       <Song currentSong={currentSong} songDirection={songDirection} />
       <Player

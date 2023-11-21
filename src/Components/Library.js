@@ -1,5 +1,5 @@
 import React from "react";
-import { useTheme } from "../context/ThemeContext";
+import { useTheme } from "../contexts/context";
 import LibrarySong from "./LibrarySong";
 
 const Library = ({
@@ -14,7 +14,11 @@ const Library = ({
   // context
   const { darkTheme } = useTheme();
   return (
-    <div className={`library ${darkTheme? 'dark-theme' : ''} ${libraryStatus ? "library-active" : ""}`}>
+    <div
+      className={`library ${darkTheme ? "dark-theme" : ""} ${
+        libraryStatus ? "library-active" : ""
+      }`}
+    >
       <h2>Library</h2>
       <div className="library-songs">
         {songs.map((song) => (
