@@ -8,9 +8,9 @@ export const SongContextProvider = ({ children }) => {
   const [song, setSong] = useState(null);
 
   return (
-    <SongContextProvider value={{ song, setSong }}>
+    <SongContext.Provider value={{ song, setSong }}>
       {children}
-    </SongContextProvider>
+    </SongContext.Provider>
   );
 };
 
