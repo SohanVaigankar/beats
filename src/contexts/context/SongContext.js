@@ -1,14 +1,27 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
+import { songReducer } from "../reducers";
 
-const initialData = {};
+const initialState = {
+  currentSong: null,
+  currentSongInfo: null,
+  isPlaying: false,
+  songList: [],
+};
 
-export const SongContext = createContext(initialData);
+export const SongContext = createContext(initialState);
 
 export const SongContextProvider = ({ children }) => {
-  const [song, setSong] = useState(null);
+  const [state, dispatch] = useReducer(songReducer, initialState);
+
+  const songState = {
+    currentSong: state.currentSong,
+    currentSongInfo: state.currentSongInfo,
+    isPlaying: state.isPlaying,
+    songList: state.songList,
+  };
 
   return (
-    <SongContext.Provider value={{ song, setSong }}>
+    <SongContext.Provider value={{ songState, dispatch }}>
       {children}
     </SongContext.Provider>
   );
