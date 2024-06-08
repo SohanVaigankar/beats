@@ -4,7 +4,7 @@ function MusicPlaylist() {
   return [
     {
       name: "Own",
-      cover: "https://cdn.pixabay.com/user/2021/11/22/12-58-14-771_96x96.jpeg",
+      cover: "https://cdn.pixabay.com/audio/2022/10/05/02-12-02-660_200x200.jpeg",
       artist: "coma-media",
       audio: "https://cdn.pixabay.com/audio/2022/08/20/audio_53e3aedf91.mp3",
       color: ["#205950", "#2ab3bf"],
@@ -22,7 +22,7 @@ function MusicPlaylist() {
     },
     {
       name: "NELYMA (Acoustic Version)",
-      cover: "https://cdn.pixabay.com/user/2021/11/22/12-58-14-771_48x48.jpeg",
+      cover: "https://cdn.pixabay.com/audio/2022/10/05/02-12-02-660_200x200.jpeg",
       artist: "MADiRFAN",
       audio: "https://cdn.pixabay.com/audio/2022/01/17/audio_75d3062d06.mp3",
       color: ["#205950", "#2ab3bf"],
@@ -31,7 +31,7 @@ function MusicPlaylist() {
     },
     {
       name: "Chill Abstract (Intention)",
-      cover: "https://cdn.pixabay.com/user/2021/11/22/12-58-14-771_48x48.jpeg",
+      cover: "https://cdn.pixabay.com/audio/2022/10/05/02-12-02-660_200x200.jpeg",
       artist: "coma-media",
       audio: "https://cdn.pixabay.com/audio/2021/12/13/audio_b9c0dc9e48.mp3",
       color: ["#CD607D", "#c94043"],
