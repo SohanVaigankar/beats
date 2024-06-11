@@ -1,11 +1,10 @@
 import React, { useState, useRef } from "react";
-import "./styles/app.scss";
+// styles
+import styles from "./styles/App.module.scss";
 
 // components
-import Nav from "./Components/Nav";
-import Player from "./Components/Player";
-import Song from "./Components/Song";
-import Library from "./Components/Library";
+import { Nav, Song } from "./Components/atoms";
+import { Library, Player } from "./Components/molecules";
 
 // song data
 import data from "./util";
@@ -18,7 +17,7 @@ const App = () => {
   const audioRef = useRef(null);
 
   // them context
-  const { darkTheme } = useTheme();
+  const { currentTheme } = useTheme();
 
   // state to initialise songs
   const [songs, setSongs] = useState(data());
@@ -62,8 +61,8 @@ const App = () => {
 
   return (
     <div
-      className={`${darkTheme ? "App dark-theme" : "App"} ${
-        libraryStatus ? "shift-to-right" : ""
+      className={`${styles[currentTheme]} ${styles.App} ${
+        libraryStatus ? styles.ShiftToRight : ""
       }`}
     >
       <Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus} />

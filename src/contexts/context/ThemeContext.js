@@ -1,11 +1,12 @@
 import { useState, createContext, useContext } from "react";
 
-export const ThemeContext = createContext("light");
+export const ThemeContext = createContext("Light");
 
 export const ThemeContextProvider = ({ children }) => {
-  const [darkTheme, setDarkTheme] = useState(false);
+  const [currentTheme, setCurrentTheme] = useState("Light");
+  
   return (
-    <ThemeContext.Provider value={{ darkTheme, setDarkTheme }}>
+    <ThemeContext.Provider value={{ currentTheme, setCurrentTheme }}>
       {children}
     </ThemeContext.Provider>
   );

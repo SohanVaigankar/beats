@@ -1,13 +1,12 @@
 import React from "react";
 
-const LibrarySong = ({
-  song,
-  allSongs,
-  setAllSongs,
-  setCurrentSong,
-  audioRef,
-  isPlaying,
-}) => {
+// styles
+import styles from "./LibrarySong.module.scss";
+
+const LibrarySong = (props) => {
+  const { song, allSongs, setAllSongs, setCurrentSong, audioRef, isPlaying } =
+    props;
+
   // handling song when clicked on a song from library
   const songSelectHandler = async () => {
     setCurrentSong(song);
@@ -25,13 +24,15 @@ const LibrarySong = ({
   return (
     <div
       onClick={songSelectHandler}
-      className={`library-song-container ${song.active ? "selected" : ""}`}
+      className={`${styles.LibrarySongContainer} ${
+        song.active ? styles.Selected : ""
+      }`}
     >
       <img
         src={song.cover}
         alt={`cover of the song ${song.name} by ${song.artist}`}
       />
-      <div className="song-description">
+      <div className={styles.SongDescription}>
         <h3>{song.name}</h3>
         <h4>{song.artist}</h4>
       </div>

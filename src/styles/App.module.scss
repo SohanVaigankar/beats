@@ -1,0 +1,40 @@
+.App {
+  height: 100vh;
+  transition: all 0.5s ease;
+}
+
+.ShiftToRight {
+  // margin-left: 15%;
+  margin-left: 20rem;
+}
+
+@media screen and (max-width: 1600px) {
+  .ShiftToRight {
+    // margin-left: 20%;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .ShiftToRight {
+    // margin-left: 25%;
+  }
+}
+@media screen and (max-width: 1240px) {
+  .ShiftToRight {
+    // margin-left: 30%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .ShiftToRight {
+    margin-left: 35%;
+  }
+}
+
+// theme controls
+.Light {
+  color: #333;
+}
+
+.Dark {
+  background-color: #333;
+  color: #fafafa;
+}

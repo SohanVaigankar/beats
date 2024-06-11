@@ -1,4 +1,12 @@
 import React, { useEffect, useState } from "react";
+
+// context
+import { useTheme } from "../../../contexts/context";
+
+// styles
+import styles from "./Player.module.scss";
+
+// icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlay,
@@ -10,18 +18,22 @@ import {
   faVolumeHigh,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Player = ({
-  isPlaying,
-  setIsPlaying,
-  audioRef,
-  songInfo,
-  setSongInfo,
-  currentSong,
-  setCurrentSong,
-  songs,
-  setSongs,
-  setSongDirection,
-}) => {
+const Player = (props) => {
+  const {
+    isPlaying,
+    setIsPlaying,
+    audioRef,
+    songInfo,
+    setSongInfo,
+    currentSong,
+    setCurrentSong,
+    songs,
+    setSongs,
+    setSongDirection,
+  } = props;
+
+  const { currentTheme } = useTheme();
+
   // state to keep track of voulme
   const [volume, setVolume] = useState(10);
   const [mute, setMute] = useState(false);
@@ -86,8 +98,8 @@ const Player = ({
   };
 
   return (
-    <div className="player">
-      <div className="time-control">
+    <div className={`${styles.Player} ${styles[currentTheme]}`}>
+      <div className={styles.TimeControl}>
         <p>{getTime(songInfo.currentTime)}</p>
         <input
           type="range"
@@ -98,7 +110,7 @@ const Player = ({
         />
         <p>{songInfo.duration ? getTime(songInfo.duration) : "0:00"}</p>
       </div>
-      <div className="play-control">
+      <div className={styles.PlayControl}>
         <FontAwesomeIcon
           className="skip-back"
           onClick={() => skipSongHandler("previous")}
@@ -118,7 +130,7 @@ const Player = ({
           icon={faAngleRight}
         />
       </div>
-      <div className="volume-control">
+      <div className={styles.VolumeControl}>
         <FontAwesomeIcon
           icon={
             volume < 1 || mute
@@ -127,7 +139,7 @@ const Player = ({
               ? faVolumeLow
               : faVolumeHigh
           }
-          className="volume-icon"
+          className={styles.VolumeIcon}
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
