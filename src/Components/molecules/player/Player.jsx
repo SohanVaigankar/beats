@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 // context
 import { useTheme } from "../../../contexts/context";
 
@@ -7,16 +6,17 @@ import { useTheme } from "../../../contexts/context";
 import styles from "./Player.module.scss";
 
 // icons
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FaVolumeXmark, FaVolumeLow, FaVolumeHigh } from "react-icons/fa6";
 import {
-  faPlay,
-  faPause,
-  faAngleLeft,
-  faAngleRight,
-  faVolumeXmark,
-  faVolumeLow,
-  faVolumeHigh,
-} from "@fortawesome/free-solid-svg-icons";
+  // TbArrowsShuffle,
+  // TbRepeat,
+  // TbRepeatOff,
+  // TbRepeatOnce,
+  TbChevronLeft,
+  TbChevronRight,
+  TbPlayerPauseFilled,
+  TbPlayerPlayFilled,
+} from "react-icons/tb";
 
 const Player = (props) => {
   const {
@@ -111,41 +111,50 @@ const Player = (props) => {
         <p>{songInfo.duration ? getTime(songInfo.duration) : "0:00"}</p>
       </div>
       <div className={styles.PlayControl}>
-        <FontAwesomeIcon
+        <TbChevronLeft
           className="skip-back"
           onClick={() => skipSongHandler("previous")}
-          size="2x"
-          icon={faAngleLeft}
         />
-        <FontAwesomeIcon
-          className="play"
-          onClick={playSongHandler}
-          size="2x"
-          icon={isPlaying ? faPause : faPlay}
-        />
-        <FontAwesomeIcon
+        {isPlaying ? (
+          <TbPlayerPauseFilled className="play" onClick={playSongHandler} />
+        ) : (
+          <TbPlayerPlayFilled className="play" onClick={playSongHandler} />
+        )}
+        <TbChevronRight
           className="skip-forward"
           onClick={() => skipSongHandler("next")}
-          size="2x"
-          icon={faAngleRight}
         />
       </div>
       <div className={styles.VolumeControl}>
-        <FontAwesomeIcon
-          icon={
-            volume < 1 || mute
-              ? faVolumeXmark
-              : volume < 50
-              ? faVolumeLow
-              : faVolumeHigh
-          }
-          className={styles.VolumeIcon}
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            setMute(!mute);
-          }}
-        />
+        {volume < 1 || mute ? (
+          <FaVolumeXmark
+            className={styles.VolumeIcon}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setMute(!mute);
+            }}
+          />
+        ) : volume < 50 ? (
+          <FaVolumeLow
+            className={styles.VolumeIcon}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setMute(!mute);
+            }}
+          />
+        ) : (
+          <FaVolumeHigh
+            className={styles.VolumeIcon}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setMute(!mute);
+            }}
+          />
+        )}
+
         <input
           type="range"
           min={0}

@@ -4,8 +4,7 @@ import React from "react";
 import styles from "./Nav.module.scss";
 
 // icons
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMusic, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+import { FaMusic, FaMoon, FaSun } from "react-icons/fa6";
 import { useTheme } from "../../../contexts/context";
 
 const Nav = (props) => {
@@ -28,13 +27,19 @@ const Nav = (props) => {
     <nav className={styles[currentTheme]}>
       <h1>BEATS</h1>
       <div className={styles.NavRight}>
-        <FontAwesomeIcon
-          className={`${styles.ThemeIcon} ${styles[currentTheme]}`}
-          icon={currentTheme === "Light" ? faSun : faMoon}
-          onClick={handleThemeToggle}
-        />
+        {currentTheme === "Light" ? (
+          <FaMoon
+            className={`${styles.ThemeIcon} ${styles[currentTheme]}`}
+            onClick={handleThemeToggle}
+          />
+        ) : (
+          <FaSun
+            className={`${styles.ThemeIcon} ${styles[currentTheme]}`}
+            onClick={handleThemeToggle}
+          />
+        )}
         <button onClick={handleLibraryToggle}>
-          Library <FontAwesomeIcon icon={faMusic} />
+          Library <FaMusic />
         </button>
       </div>
     </nav>
